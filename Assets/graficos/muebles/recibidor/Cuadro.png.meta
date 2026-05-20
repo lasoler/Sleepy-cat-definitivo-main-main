@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 66ecaff8f1780774c85aa27b38353607
+guid: 214752836872af24a89e4d13ff598c95
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8840006029306377587
-    second: Cama gato_0
+      213: 9172858812532263406
+    second: Cuadro_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cama gato_0
+      name: Cuadro_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 8
-        width: 32
-        height: 17
+        x: 14
+        y: 27
+        width: 37
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3753e15b5a20eaa70800000000000000
-      internalID: 8840006029306377587
+      spriteID: ee90cc77d7a8c4f70800000000000000
+      internalID: 9172858812532263406
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Cama gato_0: 8840006029306377587
+      Cuadro_0: 9172858812532263406
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
