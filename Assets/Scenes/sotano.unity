@@ -1090,6 +1090,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2154455203062334901, guid: af9d9876cc489ad4588b15ff0e603129, type: 3}
+      propertyPath: velocidad
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 2154455203062334901, guid: af9d9876cc489ad4588b15ff0e603129, type: 3}
+      propertyPath: tiempoMaximo
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2154455203062334901, guid: af9d9876cc489ad4588b15ff0e603129, type: 3}
+      propertyPath: tiempoMinimo
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2154455203062334901, guid: af9d9876cc489ad4588b15ff0e603129, type: 3}
       propertyPath: inicioPersonaje.x
       value: -6
       objectReference: {fileID: 0}
@@ -1097,6 +1109,14 @@ PrefabInstance:
       propertyPath: inicioPersonaje.y
       value: -5
       objectReference: {fileID: 0}
+    - target: {fileID: 2154455203062334901, guid: af9d9876cc489ad4588b15ff0e603129, type: 3}
+      propertyPath: sonidosPeriodicos.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2154455203062334901, guid: af9d9876cc489ad4588b15ff0e603129, type: 3}
+      propertyPath: 'sonidosPeriodicos.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: f046dfafe479c414a8b8abc48acb614f, type: 3}
     - target: {fileID: 4228356142751784981, guid: af9d9876cc489ad4588b15ff0e603129, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.33
@@ -3577,6 +3597,7 @@ GameObject:
   - component: {fileID: 357950206}
   - component: {fileID: 357950205}
   - component: {fileID: 357950204}
+  - component: {fileID: 357950208}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3667,6 +3688,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &357950208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357950203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e3f891f94cdd34094e9c4cac56c84e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AmbienteSotano
+  sonidosDelSotano: []
+  tiempoMinimo: 6
+  tiempoMaximo: 18
+  volumenSotano: 0.2
 --- !u!1 &368060845
 GameObject:
   m_ObjectHideFlags: 0
@@ -6341,7 +6378,7 @@ GameObject:
   m_Component:
   - component: {fileID: 732075634}
   - component: {fileID: 732075633}
-  - component: {fileID: 732075632}
+  - component: {fileID: 732075635}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -6349,37 +6386,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &732075632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732075631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 886251e9a18ece04ea8e61686c173e1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachinePositionComposer
-  CameraDistance: 10
-  DeadZoneDepth: 0
-  Composition:
-    ScreenPosition: {x: 0, y: 0}
-    DeadZone:
-      Enabled: 0
-      Size: {x: 0.2, y: 0.2}
-    HardLimits:
-      Enabled: 0
-      Size: {x: 0.8, y: 0.8}
-      Offset: {x: 0, y: 0}
-  CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 1, y: 1, z: 1}
-  Lookahead:
-    Enabled: 0
-    Time: 0
-    Smoothing: 0
-    IgnoreY: 0
 --- !u!114 &732075633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6438,6 +6444,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &732075635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732075631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b617507da6d07e749b7efdb34e1173e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineFollow
+  TrackerSettings:
+    BindingMode: 4
+    PositionDamping: {x: 1, y: 1, z: 1}
+    AngularDampingMode: 0
+    RotationDamping: {x: 1, y: 1, z: 1}
+    QuaternionDamping: 1
+  FollowOffset: {x: 0, y: 0, z: -10}
 --- !u!1 &759876357
 GameObject:
   m_ObjectHideFlags: 0
@@ -6864,10 +6889,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d815741b381f1344a0e9fc4d6e8c4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
-  bandaSonora: {fileID: 8300000, guid: d13c5b7bbebe07a49b765c2031dddd19, type: 3}
+  bandaSonora: {fileID: 8300000, guid: a99a30da097b1e74f95cf51b9821d89a, type: 3}
   fxButton: {fileID: 0}
-  fxMeow: {fileID: 8300000, guid: f046dfafe479c414a8b8abc48acb614f, type: 3}
-  fxpasos: {fileID: 8300000, guid: 625188903d76d8843ad1dc93455dee89, type: 3}
 --- !u!82 &840324769
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6879,9 +6902,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: d13c5b7bbebe07a49b765c2031dddd19, type: 3}
+  m_Resource: {fileID: 8300000, guid: a99a30da097b1e74f95cf51b9821d89a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -7129,26 +7152,28 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 859781144}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 84cfbf8e9a1670c42912f924a884bfe8, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: c5b993e7cd2bb6b4591ffc0d2304b54c, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 7c855caa680a2b24c91a5c1d00df858e, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
-  m_RenderMode: 4
+  m_RenderMode: 2
   m_AspectRatio: 2
   m_DataSource: 0
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
-  m_TargetAudioSources: []
-  m_DirectAudioVolumes: []
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
   m_Url: 
-  m_EnabledAudioTracks: 
-  m_DirectAudioMutes: 
-  m_ControlledAudioTrackCount: 0
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 0
   m_SkipOnDrop: 1
   m_Looping: 0
@@ -7175,7 +7200,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 8400000, guid: 7c855caa680a2b24c91a5c1d00df858e, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -8011,7 +8036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0cb88690b2a63c42b83a02a0b594016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CambioEscena
-  nombreEscena: casa
+  escenaSotano: sotano
 --- !u!1 &1001343938
 GameObject:
   m_ObjectHideFlags: 0
@@ -10421,6 +10446,55 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &1294195920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1294195922}
+  - component: {fileID: 1294195921}
+  m_Layer: 0
+  m_Name: AmbienteSotanoManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1294195921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294195920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e3f891f94cdd34094e9c4cac56c84e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AmbienteSotano
+  sonidosDelSotano:
+  - {fileID: 8300000, guid: f14e586c986e0764ea94aa93f1632441, type: 3}
+  tiempoMinimo: 6
+  tiempoMaximo: 18
+  volumenSotano: 1
+--- !u!4 &1294195922
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294195920}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.87132, y: -1.86293, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1305451468
 GameObject:
   m_ObjectHideFlags: 0
@@ -14870,9 +14944,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa49b563fb068bb48ab502ad0e9d5f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RomperCristal
-  tiempoLimite: 20
+  tiempoLimite: 15
   textoTemporizador: {fileID: 1461440794}
-  sonidoCristalRomper: {fileID: 0}
+  sonidoCristalRomper: {fileID: 8300000, guid: 451543a95a2bdcf4b9ad1f0e8f371673, type: 3}
+  sonidoFondoLoop: {fileID: 8300000, guid: 148df98ea2f88304399b591d944c9b2f, type: 3}
+  volumenFondo: 0.64
   videoPlayerFinal: {fileID: 859781146}
   escenaSiguiente: Final
 --- !u!114 &1842318461
@@ -17136,3 +17212,4 @@ SceneRoots:
   - {fileID: 357950207}
   - {fileID: 732075634}
   - {fileID: 840324773}
+  - {fileID: 1294195922}

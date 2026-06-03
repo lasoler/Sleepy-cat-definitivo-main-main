@@ -1,17 +1,17 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 
-public class CambioEscena : MonoBehaviour
+public class CambiarAlSotano : MonoBehaviour
 {
-    [SerializeField] private string nombreEscena; 
+    public string escenaSotano = "sotano"; // Escribe aquí el nombre exacto de tu escena del sótano
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-       
-        if (collision.CompareTag("Player"))
+        // Si el gato (Player) toca la puerta o entrada al sótano
+        if (other.CompareTag("Player"))
         {
-            ControladorGlobal.puntoAparicion = 2;
-            SceneManager.LoadScene(nombreEscena);
+            // Cambiamos a la escena del sótano inmediatamente
+            SceneManager.LoadScene(escenaSotano);
         }
     }
 }

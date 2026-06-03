@@ -14,6 +14,10 @@ public class RomperCristal : MonoBehaviour
 
     [Header("Sonidos")]
     public AudioClip sonidoCristalRomper;
+    // --- NUEVAS VARIABLES PARA EL SONIDO DE FONDO ---
+    public AudioClip sonidoFondoLoop;        // Arrastra aquí tu música o sonido de tensión
+    [Range(0f, 1f)] public float volumenFondo = 0.3f; // Volumen del bucle
+    private AudioSource audioSourceFondo;    // Canal privado para que el bucle no tape los ruidos de cristales
     private AudioSource audioSource;
 
     [Header("Secuencia de Fin de Juego (Vídeo)")]
@@ -27,6 +31,17 @@ public class RomperCristal : MonoBehaviour
     {
         audioSource = gameObject.AddComponent<AudioSource>();
         juegoTerminado = false;
+
+        // --- CONFIGURACIÓN DEL SONIDO DE FONDO ---
+        if (sonidoFondoLoop != null)
+        {
+            audioSourceFondo = gameObject.AddComponent<AudioSource>();
+            audioSourceFondo.clip = sonidoFondoLoop;
+            audioSourceFondo.loop = true;         // Activamos el bucle nativo
+            audioSourceFondo.volume = volumenFondo;
+            audioSourceFondo.playOnAwake = false;
+            audioSourceFondo.Play();              // Empieza a sonar al iniciar el minijuego
+        }
 
         trozosRestantes = GetComponentsInChildren<TrozoCristalUI>().Length;
         Debug.Log("Minijuego Ventana iniciado. Trozos a quitar: " + trozosRestantes);
@@ -92,6 +107,12 @@ public class RomperCristal : MonoBehaviour
         juegoTerminado = true;
         Debug.Log("¡Ventana rota! Reproduciendo vídeo final...");
 
+        // --- APAGAR MÚSICA DE FONDO AL GANAR ---
+        if (audioSourceFondo != null && audioSourceFondo.isPlaying)
+        {
+            audioSourceFondo.Stop(); // Silenciamos para que se escuche el vídeo de forma limpia
+        }
+
         // Guardamos datos globales
         ControladorGlobal.tieneLlave = true;
         if (GameManager.Instance != null) GameManager.Instance.RegistrarVictoriaMinijuego();
@@ -126,6 +147,13 @@ public class RomperCristal : MonoBehaviour
         juegoTerminado = true;
         if (textoTemporizador != null) textoTemporizador.text = "¡TIEMPO AGOTADO!";
         Debug.Log("No lograste romper la ventana a tiempo.");
+
+        // --- APAGAR MÚSICA DE FONDO EN GAME OVER ---
+        if (audioSourceFondo != null && audioSourceFondo.isPlaying)
+        {
+            audioSourceFondo.Stop();
+        }
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
